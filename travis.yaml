@@ -16,9 +16,9 @@ before_script:
 script:
   - npm run build
   - docker --version # print the version for logging
-  - docker build -t dishant_first_image --build-arg FAVORITE_FOOD=${FAVORITE_FOOD} .
-  - docker tag dishant_first_image dishantbatra92/dishant_first_image:latest
+  - docker build -t udagram-api --build-arg POSTGRES_USERNAME=${POSTGRES_USERNAME} POSTGRES_PASSWORD=${POSTGRES_PASSWORD} POSTGRES_DB=${POSTGRES_DB} POSTGRES_HOST=${POSTGRES_HOST} AWS_REGION=${AWS_REGION} AWS_PROFILE=${AWS_PROFILE} AWS_BUCKET=${AWS_BUCKET} URL=${URL} JWT_SECRET=${JWT_SECRET}.
+  - docker tag udagram-api dishantbatra92/udagram-api:latest
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push dishantbatra92/dishant_first_image
+  - docker push dishantbatra92/udagram-api

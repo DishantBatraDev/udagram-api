@@ -1,6 +1,6 @@
-import cors from 'cors';
 import express from 'express';
 import {sequelize} from './sequelize';
+import cors from 'cors';
 
 import {IndexRouter} from './controllers/v0/index.router';
 
@@ -39,6 +39,7 @@ import {V0_FEED_MODELS, V0_USER_MODELS} from './controllers/v0/model.index';
 
   // Start the Server
   app.listen( port, () => {
+    console.log(config)
     console.log( `server running ${config.url}` );
     console.log( `press CTRL+C to stop server` );
   } );

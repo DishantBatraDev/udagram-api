@@ -1,3 +1,5 @@
+FROM node:13
+
 ARG POSTGRES_USERNAME=
 ENV POSTGRES_USERNAME=$POSTGRES_USERNAME
 
@@ -29,7 +31,10 @@ ENV JWT_SECRET=$JWT_SECRET
 WORKDIR /usr/src/app
 
 # Copy app source
-COPY ./wwww .
+COPY . .
+
+# Install dependencies
+RUN npm install
 
 # Bind the port that the image will run on
 EXPOSE 8080
